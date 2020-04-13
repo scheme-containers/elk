@@ -1,6 +1,4 @@
-#!/bin/bash
-set -eu -o pipefail
-echo -n "Elk "
-grep -F '(define (scheme-implementation-version) ' \
-  /usr/local/share/elk/slib.scm | grep -ohE '[0-9][0-9.]+'
+#!/bin/sh
+set -eu
+cat /usr/local/share/scheme-version
 exec elk "$@"

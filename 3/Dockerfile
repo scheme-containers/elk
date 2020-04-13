@@ -12,6 +12,8 @@ WORKDIR /build/elk
 RUN ./configure
 RUN make
 RUN make install
+COPY write-scheme-version write-scheme-version
+RUN ./write-scheme-version | tee /usr/local/share/scheme-version
 
 FROM debian:buster-slim
 COPY --from=build /usr/local/ /usr/local/
